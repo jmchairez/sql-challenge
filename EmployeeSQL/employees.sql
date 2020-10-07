@@ -40,9 +40,8 @@ create table employees (
 Select * From employees
 
 create table dept_emp (
-	dept_no Varchar references departments(dept_no),
 	emp_no integer not null,
-	Primary Key (dept_no)
+	dept_no Varchar not null
 );
 
 Select * from dept_emp
