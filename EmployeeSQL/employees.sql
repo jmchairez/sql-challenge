@@ -10,21 +10,15 @@ create table departments (
 	dept_name Varchar not null
 );
 
-Select * From departments
-
 create table titles (
 	title_id Varchar Primary Key,
 	title Varchar not null
 );
 
-Select * from titles
-
 create table salaries (
 	emp_no integer Primary Key,
 	salary Float not null
 );
-
-Select * from salaries
 
 create table employees (
 	emp_no Integer references salaries(emp_no),
@@ -37,14 +31,10 @@ create table employees (
 	Primary Key (emp_no, emp_title_id)
 );
 
-Select * From employees
-
 create table dept_emp (
 	emp_no integer not null,
 	dept_no Varchar not null
 );
-
-Select * from dept_emp
 
 create table dept_manager (
 	dept_no Varchar not null,
@@ -52,4 +42,14 @@ create table dept_manager (
 	Primary Key (emp_no)
 );
 
-Select * from dept_manager
+Select employees.emp_no, last_name, first_name, sex, salary
+From employees
+inner join salaries
+on  employees.emp_no = salaries.emp_no
+;
+
+Select first_name, last_name, hire_date
+From employees
+where hire_date Between '1986-01-01' and '1986-12-31'
+;
+
